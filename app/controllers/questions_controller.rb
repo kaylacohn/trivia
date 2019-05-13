@@ -41,6 +41,19 @@ class QuestionsController < ApplicationController
     redirect_to root_path
   end
 
+  def answer
+    @question = Question.find(params[:question_id])
+    @choice = Choice.find(params[:question][:choice][:id])
+
+    AnsweredQuestion.create(user_id: current_user.id, question_id: @question.id, choice_id: @choice.id)
+
+    if @choice.correct_answer
+      redirect_to @question, notice: "Correct"
+    else
+      redirect_to @question, notice: "Wrong"
+    end
+  end
+
   private
 
   def question_params

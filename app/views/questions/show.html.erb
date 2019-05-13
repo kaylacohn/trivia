@@ -1,0 +1,19 @@
+<div class="question_container">
+  <h1><%= @question.title %></h1>
+
+  <% if @question.user_id == current_user.id %>
+    <%= link_to "Edit Question", edit_question_path %>
+  <% else if !@answered %>
+    <%= form_for @question, url: question_answer_path(@question) do |f| %>
+      <% @choices.each do |choice| %>
+        <%= f.fields_for choice do |ff| %>
+          <%= ff.radio_button :id, choice.id, checked: false  %><%= choice.text %>
+        <% end %>
+      <% end %>
+      <%= f.submit "Answer" %>
+    <% end %>
+  <% else %>
+    <h4>You've answered this question already</h4>
+    <% end %>
+  <% end %>
+</div>
