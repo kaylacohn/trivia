@@ -1,0 +1,5 @@
+<%= form_for([@question, @question.choices.build]) do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+<%= f.submit %>
+<% end %>
