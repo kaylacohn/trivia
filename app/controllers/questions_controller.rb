@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def show
     @choices = @question.choices
+    @answered = AnsweredQuestion.find_by(user_id: current_user.id, question_id: @question.id)
   end
 
   def new

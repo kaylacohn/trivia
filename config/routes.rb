@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :choices
+
+    patch '/answer' => 'questions#answer'
   end
 end
