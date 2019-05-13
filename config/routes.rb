@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get '/sign_in' => 'devise/sessions#new'
   get '/sign_up' => 'devise/registrations#new'
 
-  resources :questions
+  resources :questions do
+    resources :choices
+  end
 end
