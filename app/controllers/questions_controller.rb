@@ -54,6 +54,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def me
+    @questions = Question.where(user_id: current_user.id)
+  end
+
+  def answered_questions
+    @answered_questions = AnsweredQuestion.where(user_id: current_user.id)
+    @questions = Question.where(id: @answered_questions.pluck(:question_id))
+  end
+
   private
 
   def question_params
