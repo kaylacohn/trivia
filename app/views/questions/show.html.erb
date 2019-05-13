@@ -1,8 +1,10 @@
 <div class="question_container">
   <h1><%= @question.title %></h1>
+  <h5>Asked by: <%= @question.user.name %>
 
   <% if @question.user_id == current_user.id %>
     <%= link_to "Edit Question", edit_question_path %>
+    <%= link_to "Add Choices",  new_question_choice_path(@question.id) %>
   <% else if !@answered %>
     <%= form_for @question, url: question_answer_path(@question) do |f| %>
       <% @choices.each do |choice| %>

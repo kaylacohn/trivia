@@ -1,0 +1,11 @@
+<h2>Questions I've Asked</h2>
+
+<div class="questions_container">
+  <% @questions.each do |question| %>
+    <div class="question">
+      <h2><%= link_to question.title, question %></h2>
+    </div>
+  <% end %>
+
+  <%= link_to "Create New Question", new_question_path %>
+</div>
