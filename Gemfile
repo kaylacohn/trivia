@@ -15,11 +15,11 @@ gem 'jquery-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'bootstrap', '~> 4.3.1'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry', '~> 0.12.2'
-  gem 'devise'
 end
 
 group :development do
